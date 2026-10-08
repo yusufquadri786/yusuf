@@ -1,0 +1,38 @@
+/* LEGEND UI SYSTEM — Yusuf AI Studio */
+:root{--lg-bg:#05070b;--lg-panel:rgba(12,17,27,.72);--lg-line:rgba(255,255,255,.09);--lg-text:#f4f8ff;--lg-muted:#8390a5;--lg-cyan:#63e8ff;--lg-blue:#6d8cff;--lg-purple:#a78bfa;--lg-glow:0 0 45px rgba(99,232,255,.12),0 25px 80px rgba(0,0,0,.35)}
+body.legend{background:var(--lg-bg)!important;color:var(--lg-text)!important}
+body.legend:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(circle at 15% 10%,rgba(99,232,255,.13),transparent 28%),radial-gradient(circle at 85% 20%,rgba(109,140,255,.12),transparent 30%),radial-gradient(circle at 50% 100%,rgba(167,139,250,.09),transparent 35%)}
+body.legend:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.035;background-image:linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+body.legend a,body.legend button{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease}
+body.legend .card{background:linear-gradient(145deg,rgba(18,25,38,.82),rgba(7,11,18,.86))!important;border-color:var(--lg-line)!important;box-shadow:var(--lg-glow)!important;backdrop-filter:blur(18px)}
+body.legend .card:hover{transform:translateY(-4px);border-color:rgba(99,232,255,.28)!important;box-shadow:0 0 45px rgba(99,232,255,.1),0 30px 80px rgba(0,0,0,.45)!important}
+body.legend input{border-color:rgba(255,255,255,.08)!important}
+body.legend .primary-btn,body.legend .new{background:linear-gradient(135deg,#63e8ff,#6d8cff)!important;color:#041018!important;box-shadow:0 10px 30px rgba(99,232,255,.18)}
+body.legend .primary-btn:hover,body.legend .new:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(99,232,255,.28)}
+body.legend .avatar{box-shadow:0 0 22px rgba(99,232,255,.18)}
+body.legend .topbar{background:rgba(5,7,11,.76)!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+body.legend .brand{color:#fff!important}
+body.legend .search-wrap{background:rgba(255,255,255,.035)!important;border-color:rgba(255,255,255,.09)!important}
+body.legend .nav-item.active,body.legend .nav-item:hover{background:rgba(99,232,255,.08)!important;color:var(--lg-cyan)!important}
+body.legend .composer input{background:rgba(255,255,255,.035)!important;color:#fff}
+body.legend .comment{background:rgba(255,255,255,.035)!important}
+body.legend .action:hover{background:rgba(99,232,255,.07)!important;color:var(--lg-cyan)!important}
+body.legend .toast{background:#0b1220!important;border:1px solid rgba(99,232,255,.2)}
+body.legend .hero h1{background:linear-gradient(100deg,#fff 15%,#63e8ff 55%,#a78bfa 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.legend .hero h1 em{color:#71829a!important}
+body.legend .eyebrow{color:var(--lg-cyan)!important;text-shadow:0 0 18px rgba(99,232,255,.45)}
+body.legend .hero-actions a:first-child{background:linear-gradient(135deg,#63e8ff,#6d8cff)!important;box-shadow:0 12px 35px rgba(99,232,255,.18)}
+body.legend .card.primary,body.legend .card.blue,body.legend .card.green,body.legend .card.orange{background:linear-gradient(145deg,rgba(18,27,42,.88),rgba(7,11,18,.9))!important}
+body.legend .app{background:transparent!important}
+body.legend .sidebar{background:rgba(6,9,15,.78)!important;border-color:rgba(255,255,255,.08)!important;backdrop-filter:blur(22px)}
+body.legend .brand span{filter:drop-shadow(0 0 10px rgba(99,232,255,.65))}
+body.legend .message{box-shadow:0 0 30px rgba(99,232,255,.06)}
+body.legend .overlay{background:radial-gradient(circle at 50% 42%,rgba(26,53,77,.6),rgba(3,5,9,.96))!important}
+body.legend .panel{background:linear-gradient(145deg,rgba(13,22,34,.9),rgba(4,7,12,.95))!important;border-color:rgba(99,232,255,.2)!important;box-shadow:0 0 70px rgba(99,232,255,.09),0 30px 100px #000b!important;backdrop-filter:blur(20px)}
+body.legend .logo{color:#fff!important;text-shadow:0 0 30px rgba(99,232,255,.25)}
+body.legend .logo span{color:var(--lg-cyan)!important}
+body.legend #startBtn{background:linear-gradient(135deg,#63e8ff,#6d8cff)!important;box-shadow:0 10px 35px rgba(99,232,255,.22)!important}
+body.legend #hud .stat,body.legend #hud .zone{background:rgba(5,10,17,.78)!important;border-color:rgba(99,232,255,.13)!important;backdrop-filter:blur(14px)}
+body.legend .health{background:#071018!important;border-color:rgba(255,255,255,.1)!important}
+body.legend .zone span{color:var(--lg-cyan)!important}
+@media(max-width:700px){body.legend:after{background-size:28px 28px}body.legend .hero h1{font-size:clamp(42px,13vw,70px)}}
