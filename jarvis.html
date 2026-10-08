@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050a12">
+<title>JARVIS X — AI Command Center</title>
+<link rel="stylesheet" href="jarvis.css">
+</head>
+<body>
+<div class="scanlines"></div>
+<header class="topbar">
+  <div class="brand"><span class="dot"></span> JARVIS <b>X</b></div>
+  <div class="status"><i id="statusDot"></i><span id="statusText">SYSTEM ONLINE</span></div>
+  <button id="settingsBtn" class="glass-btn">⚙</button>
+</header>
+
+<main class="command-center">
+  <section class="core-card">
+    <div class="core-ring ring-1"></div><div class="core-ring ring-2"></div><div class="core-ring ring-3"></div>
+    <div id="orb" class="orb"><span></span></div>
+    <div class="core-label">JARVIS CORE</div>
+    <div id="listening" class="listening">STANDBY</div>
+  </section>
+
+  <section class="conversation glass">
+    <div class="section-head"><span>CONVERSATION</span><small id="clock">--:--:--</small></div>
+    <div id="messages" class="messages">
+      <div class="msg ai"><b>JARVIS</b><p>Systems online. Say “Hey JARVIS” or press the microphone.</p></div>
+    </div>
+    <div class="input-row">
+      <button id="micBtn" class="mic" title="Voice input">🎙</button>
+      <input id="prompt" autocomplete="off" placeholder="Ask JARVIS anything...">
+      <button id="sendBtn" class="send">SEND</button>
+    </div>
+  </section>
+
+  <aside class="side-panel">
+    <div class="glass metric"><small>AI ENGINE</small><strong id="engine">READY</strong><span>Local voice + optional cloud AI</span></div>
+    <div class="glass metric"><small>KNOWLEDGE</small><strong id="knowledge">WEB READY</strong><span>Live public knowledge lookup</span></div>
+    <div class="glass metric"><small>VOICE</small><strong id="voiceState">READY</strong><span>Speech recognition + synthesis</span></div>
+    <div class="glass quick">
+      <small>QUICK COMMANDS</small>
+      <button data-cmd="What is artificial intelligence?">AI overview</button>
+      <button data-cmd="Tell me the current time">Current time</button>
+      <button data-cmd="Explain photosynthesis simply">Explain a topic</button>
+      <button data-cmd="Search Wikipedia for space exploration">Web knowledge</button>
+    </div>
+  </aside>
+</main>
+
+<div id="settings" class="modal hidden">
+  <div class="modal-box glass">
+    <button id="closeSettings" class="close">×</button>
+    <h2>JARVIS X Settings</h2>
+    <p>For full AI answers, run the included Python server and set your API key in <code>.env</code>. Never put API keys in browser JavaScript or GitHub.</p>
+    <label>Backend URL<input id="backendUrl" placeholder="http://127.0.0.1:8000"></label>
+    <button id="saveSettings" class="save">SAVE</button>
+  </div>
+</div>
+<script src="jarvis.js"></script>
+</body>
+</html>
