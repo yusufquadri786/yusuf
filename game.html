@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Last Zone — Battle Royale</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+<div id="menu" class="overlay">
+  <div class="panel">
+    <div class="logo">LAST <span>ZONE</span></div>
+    <p>Original browser battle-royale prototype</p>
+    <button id="startBtn">DROP INTO THE ISLAND</button>
+    <div class="controls">WASD / Arrow Keys: Move · Mouse: Aim · Click: Fire · R: Reload</div>
+  </div>
+</div>
+<canvas id="game"></canvas>
+<div id="hud">
+  <div class="top">
+    <div class="stat"><b>LAST ZONE</b><small>SOLO</small></div>
+    <div class="stat"><b id="alive">12</b><small>ALIVE</small></div>
+    <div class="stat"><b id="kills">0</b><small>ELIMS</small></div>
+    <div class="stat ammo"><b id="ammo">30 / 120</b><small>AMMO</small></div>
+  </div>
+  <div class="bottom">
+    <div class="health"><div id="hpBar"></div></div>
+    <div class="hpText" id="hpText">100 HP</div>
+    <div class="zone">SAFE ZONE <span id="zoneTimer">30</span>s</div>
+  </div>
+</div>
+<div id="message"></div>
+<script src="game.js"></script>
+</body>
+</html>
