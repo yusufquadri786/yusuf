@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MySocial - a clean social app starter." />
+  <title>MySocial</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">MySocial</div>
+    <div class="search-wrap">
+      <span>⌕</span>
+      <input id="searchInput" type="search" placeholder="Search people or posts..." />
+    </div>
+    <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <nav>
+        <button class="nav-item active" data-section="home">⌂ <span>Home</span></button>
+        <button class="nav-item" data-section="explore">◈ <span>Explore</span></button>
+        <button class="nav-item" data-section="notifications">♡ <span>Notifications</span></button>
+        <button class="nav-item" data-section="profile">◎ <span>Profile</span></button>
+      </nav>
+      <div class="profile-mini">
+        <div class="avatar">Y</div>
+        <div>
+          <strong>Yusuf</strong>
+          <small>@yusuf</small>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="stories card">
+        <div class="section-title">
+          <h2>Stories</h2>
+          <button id="addStoryBtn" class="text-btn">+ Add</button>
+        </div>
+        <div id="storiesList" class="stories-list"></div>
+      </section>
+
+      <section class="composer card">
+        <div class="avatar">Y</div>
+        <input id="postText" maxlength="280" placeholder="What's happening?" />
+        <button id="postBtn" class="primary-btn">Post</button>
+      </section>
+
+      <div id="feed"></div>
+      <div id="emptyState" class="empty card hidden">No matching posts found.</div>
+    </section>
+
+    <aside class="rightbar">
+      <section class="card suggestions">
+        <div class="section-title"><h2>Suggestions</h2><button class="text-btn">See all</button></div>
+        <div class="suggestion"><div class="avatar purple">A</div><div><strong>Arjun</strong><small>@arjun</small></div><button class="follow-btn">Follow</button></div>
+        <div class="suggestion"><div class="avatar orange">S</div><div><strong>Sarah</strong><small>@sarah</small></div><button class="follow-btn">Follow</button></div>
+        <div class="suggestion"><div class="avatar green">R</div><div><strong>Rahul</strong><small>@rahul</small></div><button class="follow-btn">Follow</button></div>
+      </section>
+      <p class="footer-note">MySocial • Built as a starter project</p>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
