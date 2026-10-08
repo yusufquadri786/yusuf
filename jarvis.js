@@ -1,10 +1,81 @@
-const $=id=>document.getElementById(id);const messages=$("messages");let backend=localStorage.getItem("jarvisBackend")||"http://127.0.0.1:8000";$("backendUrl").value=backend;let recognition=null,listening=false;
-function addMessage(role,text){const el=document.createElement("div");el.className="msg "+role;el.innerHTML="<b>"+(role==="ai"?"JARVIS":"YOU")+"</b><p></p>";el.querySelector("p").textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight}
-function speak(text){if(!("speechSynthesis"in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.rate=.95;u.pitch=.9;speechSynthesis.speak(u)}
-function localAnswer(q){const x=q.toLowerCase();if(x.includes("current time")||x==="time")return "The current local time is "+new Date().toLocaleTimeString();if(x.includes("who are you"))return "I am JARVIS X, an original AI command-center interface. My voice, web knowledge and cloud AI capabilities depend on the modules you enable.";if(x.includes("hello")||x.includes("hi jarvis"))return "Hello. All core interface systems are online.";if(x.includes("artificial intelligence"))return "Artificial intelligence is technology that enables computers to perform tasks that normally require human-like reasoning, learning or perception.";if(x.includes("photosynthesis"))return "Photosynthesis is the process by which green plants use light energy to make food from carbon dioxide and water, releasing oxygen.";return null}
-async function ask(q){q=q.trim();if(!q)return;addMessage("user",q);$("statusText").textContent="PROCESSING";$("listening").textContent="THINKING";let answer=localAnswer(q);if(!answer){try{const r=await fetch(backend+"/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q})});if(!r.ok)throw new Error("backend");const d=await r.json();answer=d.answer||"I received no answer from the AI service."}catch(e){answer="I can answer basic commands locally. For advanced AI and live knowledge, start the included JARVIS backend and configure its API key."}}addMessage("ai",answer);speak(answer);$("statusText").textContent="SYSTEM ONLINE";$("listening").textContent="STANDBY";$("engine").textContent=answer.startsWith("I can answer basic")?"LOCAL MODE":"AI ONLINE"}
-$("sendBtn").onclick=()=>{ask($("prompt").value);$("prompt").value=""};$("prompt").addEventListener("keydown",e=>{if(e.key==="Enter"){$("sendBtn").click()}});document.querySelectorAll("[data-cmd]").forEach(b=>b.onclick=()=>ask(b.dataset.cmd));
-$("micBtn").onclick=()=>{if(!recognition){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){addMessage("ai","Voice recognition is not supported by this browser. Try a current Chromium-based browser.");return}recognition=new SR();recognition.lang="en-IN";recognition.interimResults=false;recognition.continuous=false;recognition.onstart=()=>{listening=true;$("voiceState").textContent="LISTENING";$("listening").textContent="LISTENING";$("statusText").textContent="VOICE INPUT";$("orb").style.filter="brightness(1.5)"};recognition.onresult=e=>ask(e.results[0][0].transcript);recognition.onerror=()=>{listening=false;$("voiceState").textContent="READY";$("listening").textContent="STANDBY"};recognition.onend=()=>{listening=false;$("voiceState").textContent="READY";$("listening").textContent="STANDBY";$("statusText").textContent="SYSTEM ONLINE"}}recognition.start()};
-setInterval(()=>$("clock").textContent=new Date().toLocaleTimeString(),1000);
-$("settingsBtn").onclick=()=>$("settings").classList.remove("hidden");$("closeSettings").onclick=()=>$("settings").classList.add("hidden");$("saveSettings").onclick=()=>{backend=$("backendUrl").value.replace(/\/$/,"");localStorage.setItem("jarvisBackend",backend);$("settings").classList.add("hidden");addMessage("ai","Backend address saved.");};
+const $=id=>document.getElementById(id);
+const messages=$("messages");
+let backend=localStorage.getItem("jarvisBackend")||"http://127.0.0.1:8000";
+$("backendUrl").value=backend;
+let recognition=null,listening=false;
+const started=Date.now();
+
+function activity(text){const el=$("activityText");if(el)el.textContent=text}
+function addMessage(role,text){
+  const el=document.createElement("div");el.className="msg "+role;
+  el.innerHTML="<b>"+(role==="ai"?"JARVIS":"YOU")+"</b><p></p>";
+  el.querySelector("p").textContent=text;messages.appendChild(el);
+  messages.scrollTop=messages.scrollHeight;
+}
+function speak(text){
+  if(!("speechSynthesis"in window))return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.rate=.94;u.pitch=.88;speechSynthesis.speak(u);
+}
+function localAnswer(q){
+  const x=q.toLowerCase();
+  if(x.includes("current time")||x==="time")return "The current local time is "+new Date().toLocaleTimeString();
+  if(x.includes("who are you"))return "I am JARVIS X, an original AI command-center interface. My voice, web knowledge and cloud AI capabilities depend on the modules you enable.";
+  if(x.includes("hello")||x.includes("hi jarvis"))return "Hello. All core interface systems are online.";
+  if(x.includes("artificial intelligence"))return "Artificial intelligence is technology that enables computers to perform tasks that normally require human-like reasoning, learning or perception.";
+  if(x.includes("photosynthesis"))return "Photosynthesis is the process by which green plants use light energy to make food from carbon dioxide and water, releasing oxygen.";
+  return null;
+}
+async function ask(q){
+  q=q.trim();if(!q)return;
+  addMessage("user",q);activity("Processing command: "+q);
+  $("statusText").textContent="PROCESSING";$("listening").textContent="THINKING";$("aiBar").style.width="96%";
+  let answer=localAnswer(q);
+  if(!answer){
+    try{
+      const r=await fetch(backend+"/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q})});
+      if(!r.ok)throw new Error("backend");
+      const d=await r.json();answer=d.answer||"I received no answer from the AI service.";
+      $("engine").textContent="AI ONLINE";activity("Cloud AI response received.");
+    }catch(e){
+      answer="I can answer basic commands locally. For advanced AI and live knowledge, start the included JARVIS backend and configure its API key.";
+      $("engine").textContent="LOCAL";activity("Advanced backend offline — local mode active.");
+    }
+  }else{activity("Local JARVIS module completed the command.")}
+  addMessage("ai",answer);speak(answer);
+  $("statusText").textContent="SYSTEM ONLINE";$("listening").textContent="SYSTEM STANDBY";$("aiBar").style.width="88%";
+}
+$("sendBtn").onclick=()=>{ask($("prompt").value);$("prompt").value=""};
+$("prompt").addEventListener("keydown",e=>{if(e.key==="Enter")$("sendBtn").click()});
+document.querySelectorAll("[data-cmd]").forEach(b=>b.onclick=()=>ask(b.dataset.cmd));
+
+$("micBtn").onclick=()=>{
+  if(!recognition){
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(!SR){addMessage("ai","Voice recognition is not supported by this browser. Try a current Chromium-based browser.");return}
+    recognition=new SR();recognition.lang="en-IN";recognition.interimResults=false;recognition.continuous=false;
+    recognition.onstart=()=>{listening=true;$("voiceState").textContent="LISTENING";$("listening").textContent="LISTENING";$("statusText").textContent="VOICE INPUT";activity("Microphone active — listening for command.");$("orb").style.filter="brightness(1.5)"};
+    recognition.onresult=e=>ask(e.results[0][0].transcript);
+    recognition.onerror=()=>{listening=false;$("voiceState").textContent="READY";$("listening").textContent="SYSTEM STANDBY";$("statusText").textContent="SYSTEM ONLINE";activity("Voice input ended.");};
+    recognition.onend=()=>{listening=false;$("voiceState").textContent="READY";$("listening").textContent="SYSTEM STANDBY";$("statusText").textContent="SYSTEM ONLINE";$("orb").style.filter="";};
+  }
+  recognition.start();
+};
+
+setInterval(()=>{
+  $("clock").textContent=new Date().toLocaleTimeString();
+  const sec=Math.floor((Date.now()-started)/1000),h=String(Math.floor(sec/3600)).padStart(2,"0"),m=String(Math.floor(sec%3600/60)).padStart(2,"0"),s=String(sec%60).padStart(2,"0");
+  $("uptime").textContent=h+":"+m+":"+s;
+},1000);
+
+$("settingsBtn").onclick=()=>$("settings").classList.remove("hidden");
+$("closeSettings").onclick=()=>$("settings").classList.add("hidden");
+$("saveSettings").onclick=()=>{
+  backend=$("backendUrl").value.replace(/\/$/,"");
+  localStorage.setItem("jarvisBackend",backend);
+  $("settings").classList.add("hidden");
+  activity("Backend configuration saved.");
+  addMessage("ai","Backend address saved.");
+};
 window.addEventListener("keydown",e=>{if(e.key.toLowerCase()==="j"&&e.ctrlKey){e.preventDefault();$("micBtn").click()}});
