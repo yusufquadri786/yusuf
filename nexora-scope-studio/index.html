@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="Turn your digital idea into a clear, budget-aware project brief with NEXORA Scope Studio.">
+  <title>NEXORA Scope Studio — Plan Your Next Digital Project</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="#top" aria-label="NEXORA AI home"><span class="brand-mark">N</span><span>NEXORA AI<small>SCOPE STUDIO</small></span></a>
+    <nav aria-label="Main navigation"><a href="#how">How it works</a><a class="nav-cta" href="#planner">Plan a project ↗</a></nav>
+  </header>
+  <main id="top" class="shell">
+    <section class="hero">
+      <div>
+        <span class="eyebrow"><i></i> FREE PROJECT DISCOVERY TOOL</span>
+        <h1>A clear plan for your <em>next big idea.</em></h1>
+        <p class="hero-copy">Tell us what you want to build. Scope Studio turns your idea, must-have features and budget into a practical project brief you can review before starting.</p>
+        <div class="actions"><a class="primary" href="#planner">Build my project brief →</a><a class="secondary" href="#how">See how it works</a></div>
+      </div>
+      <aside class="hero-card">
+        <span class="mini-label">FROM IDEA TO ACTION</span>
+        <h2>Make the scope clear before the build begins.</h2>
+        <ol><li><b>01</b> Describe the outcome you need</li><li><b>02</b> Match features to your budget</li><li><b>03</b> Export a brief for review</li></ol>
+      </aside>
+    </section>
+
+    <section id="planner">
+      <div class="section-head"><h2>Your project planner</h2><p>Choose the closest options. Adjust everything before copying or downloading your brief.</p></div>
+      <div class="workspace">
+        <section class="panel form-panel">
+          <div class="panel-title"><h3>01 / Tell us about your idea</h3><span class="step-tag">ABOUT 2 MIN</span></div>
+          <form id="project-form">
+            <fieldset><legend>What would you like to build?</legend>
+              <div class="type-grid">
+                <label class="type-option"><input type="radio" name="projectType" value="website" checked><span class="type-icon">⌘</span><span><strong>Website</strong><small>Business site or landing page</small></span></label>
+                <label class="type-option"><input type="radio" name="projectType" value="app"><span class="type-icon">▣</span><span><strong>Mobile app</strong><small>Android app or prototype</small></span></label>
+                <label class="type-option"><input type="radio" name="projectType" value="ai"><span class="type-icon">✳</span><span><strong>AI solution</strong><small>Chatbot or smart assistant</small></span></label>
+                <label class="type-option"><input type="radio" name="projectType" value="automation"><span class="type-icon">↗</span><span><strong>Automation</strong><small>Connect tasks and tools</small></span></label>
+              </div>
+            </fieldset>
+            <div class="grid-2">
+              <div class="field"><label for="project-name">Project name</label><input id="project-name" name="projectName" maxlength="70" placeholder="e.g. Local business website" required></div>
+              <div class="field"><label for="business-name">Business / brand <small>Optional</small></label><input id="business-name" name="businessName" maxlength="70" placeholder="Your brand name"></div>
+            </div>
+            <div class="field"><label for="goal">What should this project help you achieve?</label><textarea id="goal" name="goal" maxlength="500" placeholder="Describe the problem, audience and main result you want…" required></textarea></div>
+            <div class="grid-2">
+              <div class="field"><label for="size">Pages / screens / workflows</label><select id="size" name="size"><option value="3">1–3 (starter)</option><option value="5">4–6</option><option value="8">7–10</option><option value="12">11–15</option></select></div>
+              <div class="field"><label for="design">Design preference</label><select id="design" name="design"><option value="starter">Clean and simple</option><option value="polished">Polished brand design</option><option value="premium">Premium custom experience</option></select></div>
+            </div>
+            <fieldset><legend>Features you may need <small>Choose all that apply</small></legend>
+              <div class="check-grid">
+                <label class="check"><input type="checkbox" name="features" value="User accounts">User accounts</label>
+                <label class="check"><input type="checkbox" name="features" value="Admin dashboard">Admin dashboard</label>
+                <label class="check"><input type="checkbox" name="features" value="Payments or checkout">Payments / checkout</label>
+                <label class="check"><input type="checkbox" name="features" value="AI-powered feature">AI-powered feature</label>
+                <label class="check"><input type="checkbox" name="features" value="Analytics and reports">Analytics / reports</label>
+                <label class="check"><input type="checkbox" name="features" value="Multiple languages">Multiple languages</label>
+              </div>
+            </fieldset>
+            <div class="grid-2">
+              <div class="field"><label for="integrations">External integrations</label><select id="integrations" name="integrations"><option value="0">None for now</option><option value="1">1 integration</option><option value="2">2–3 integrations</option><option value="4">4+ integrations</option></select></div>
+              <div class="field"><label for="budget">Your planned budget</label><select id="budget" name="budget"><option value="10000">Under ₹10,000</option><option value="25000" selected>₹10,000–₹25,000</option><option value="50000">₹25,000–₹50,000</option><option value="100000">₹50,000–₹1 lakh</option><option value="200000">₹1 lakh+</option></select></div>
+            </div>
+            <div class="field"><label for="timeline">Preferred timeline</label><select id="timeline" name="timeline"><option>Flexible — quality first</option><option>2–3 weeks</option><option>4–6 weeks</option><option>2–3 months</option></select></div>
+            <div class="actions"><button class="primary" type="submit">Generate project brief →</button><button class="quiet" type="reset">Reset form</button></div>
+          </form>
+        </section>
+
+        <div class="right-column">
+          <aside class="panel estimate-panel" aria-live="polite">
+            <div class="estimate-head"><span class="mini-label">PLANNING ESTIMATE · INR</span><h3>Budget-aware scope</h3><p>A starting range based on the choices above.</p>
+              <div class="estimate"><div><strong id="estimate-range">₹9,000–₹18,000</strong><small>Illustrative project range</small></div><span id="budget-status" class="status">Budget can be reviewed</span></div>
+            </div>
+            <div class="estimate-body">
+              <div class="metric"><span>Project type</span><b id="summary-type">Website</b></div>
+              <div class="metric"><span>Scope size</span><b id="summary-size">1–3 items</b></div>
+              <div class="metric"><span>Selected features</span><b id="summary-features">0</b></div>
+              <div class="metric"><span>Planned budget</span><b id="summary-budget">₹10,000</b></div>
+              <div class="fit-box"><b id="fit-title">Start with the essentials</b><p id="fit-copy">Choose features and budget to see a suggested first phase.</p></div>
+              <p class="fine-print">This is an educational planning estimate, not a quote or guaranteed price. Final cost depends on confirmed requirements, integrations, testing and hosting.</p>
+            </div>
+          </aside>
+          <section class="panel brief-panel">
+            <div class="panel-title"><h3>02 / Your project brief</h3><span class="step-tag">READY TO REVIEW</span></div>
+            <div id="brief-output" class="brief-output" role="status">Your project brief will appear here after you enter a project name and goal, then select “Generate project brief”.</div>
+            <div class="actions"><button class="secondary" id="copy-brief" type="button">Copy brief</button><button class="secondary" id="download-brief" type="button">Download .txt</button></div>
+            <p class="fine-print">Your entries stay in this browser page. Nothing is submitted to a server.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="trust-strip">
+      <article><b>01 · Clear requirements</b><span>Organise the goal, scope and must-have features before development.</span></article>
+      <article><b>02 · Budget in view</b><span>See an indicative range and identify a sensible first release.</span></article>
+      <article><b>03 · No surprise submission</b><span>Review, copy or download the brief yourself. No account is needed.</span></article>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>© <span id="year"></span> NEXORA AI · Scope Studio</span><span>Ideas → Scope → Build · No paid services required</span></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
