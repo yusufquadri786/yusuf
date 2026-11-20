@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b12">
+<meta name="description" content="Live weather and five-day forecast by Yusuf AI Studio.">
+<title>Weather — Yusuf AI Studio</title>
+<link rel="stylesheet" href="weather.css"><link rel="stylesheet" href="legend.css">
+</head>
+<body class="legend weather-page">
+<header class="weather-top"><a class="brand" href="portal.html">Y<span>AI</span></a><nav><a href="portal.html">Studio</a><a href="chat.html">MyAI</a><a href="jarvis.html">JARVIS X</a><a href="index.html">MySocial</a></nav></header>
+<main class="weather-wrap">
+<section class="weather-hero"><div class="eyebrow">YUSUF AI STUDIO • LIVE WEATHER</div><h1>Weather, <em>at a glance.</em></h1><p>Search any city for current conditions and a five-day forecast.</p>
+<form id="searchForm" class="search-form"><input id="cityInput" placeholder="Enter a city, e.g. Patna" aria-label="City name" value="Patna"><button type="submit">Search</button></form>
+<div id="status" class="status" role="status">Loading weather…</div></section>
+<section id="currentCard" class="current-card hidden"><div class="current-main"><div><small id="place">—</small><h2 id="temperature">—°</h2><p id="condition">—</p></div><div id="weatherIcon" class="weather-icon">☀</div></div><div class="metrics"><div><small>FEELS LIKE</small><b id="feels">—</b></div><div><small>HUMIDITY</small><b id="humidity">—</b></div><div><small>WIND</small><b id="wind">—</b></div><div><small>PRECIPITATION</small><b id="rain">—</b></div></div></section>
+<section class="forecast-section"><div class="section-head"><h2>5-day forecast</h2><span>DAILY OUTLOOK</span></div><div id="forecast" class="forecast-grid"></div></section>
+<footer>Weather data by Open-Meteo • Yusuf AI Studio</footer>
+</main><script src="weather.js"></script></body></html>
