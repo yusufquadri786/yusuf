@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0d">
+  <meta name="description" content="NEXORA ClientDesk helps small teams organise customer requirements, project budgets, tasks and handovers in one private workspace.">
+  <title>NEXORA ClientDesk — Customer Project Workspace</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="NEXORA ClientDesk home">
+        <span class="brand-mark">N<span>✳</span></span>
+        <span class="brand-copy"><strong>NEXORA AI</strong><small>CLIENTDESK</small></span>
+      </a>
+      <div class="topbar-actions">
+        <span class="local-pill"><span class="status-dot"></span> PRIVATE LOCAL WORKSPACE</span>
+        <button class="button button-quiet" id="exportBtn" type="button">Export backup</button>
+        <button class="button button-quiet" id="importBtn" type="button">Import backup</button>
+        <input id="importFile" type="file" accept="application/json,.json" hidden>
+      </div>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> CUSTOMER OPERATIONS / 01</p>
+          <h1>From customer need<br>to <span>clean handover.</span></h1>
+          <p class="hero-description">Keep every requirement, budget decision, milestone and delivery check in one organised workspace.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#createProject">Create a project <span aria-hidden="true">↗</span></a>
+            <span class="hero-note">No account · No paid API · No cloud upload</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div class="core-card"><span class="core-symbol">N</span><span class="core-label">IDEA → DELIVERY</span><span class="core-line"></span><span class="core-mini">PROJECT CONTROL</span></div>
+          <span class="art-tag tag-top">01 / DISCOVER</span><span class="art-tag tag-bottom">05 / DELIVER</span>
+        </div>
+      </section>
+      <section class="stats-grid" aria-label="Workspace summary">
+        <article class="stat-card"><span class="stat-label">ACTIVE PROJECTS</span><strong id="activeCount">0</strong><span class="stat-foot">In progress</span></article>
+        <article class="stat-card"><span class="stat-label">TOTAL CUSTOMER BUDGET</span><strong id="budgetTotal">₹0</strong><span class="stat-foot">Active projects only</span></article>
+        <article class="stat-card"><span class="stat-label">OPEN CHECKLIST ITEMS</span><strong id="openTasks">0</strong><span class="stat-foot">Across all projects</span></article>
+        <article class="stat-card stat-card-accent"><span class="stat-label">READY FOR HANDOVER</span><strong id="handoverReady">0</strong><span class="stat-foot">All delivery checks done</span></article>
+      </section>
+      <section class="workspace-grid">
+        <div class="projects-column">
+          <div class="section-heading">
+            <div><p class="eyebrow">YOUR WORKSPACE</p><h2>Project pipeline</h2></div>
+            <span class="count-chip" id="projectCount">0 PROJECTS</span>
+          </div>
+          <div class="filter-row">
+            <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search projects or client labels" autocomplete="off"></label>
+            <select id="stageFilter" aria-label="Filter projects by stage">
+              <option value="all">All stages</option><option value="Discovery">Discovery</option><option value="Planning">Planning</option><option value="Building">Building</option><option value="Testing">Testing</option><option value="Delivered">Delivered</option>
+            </select>
+          </div>
+          <div id="projectList" class="project-list" aria-live="polite"></div>
+        </div>
+        <aside class="create-panel" id="createProject">
+          <div class="panel-heading"><div><p class="eyebrow">START WITH CLARITY</p><h2>New project</h2></div><span class="panel-number">N° 01</span></div>
+          <p class="panel-intro">Capture the essentials before work begins. Use a short client label instead of private personal details.</p>
+          <form id="projectForm" novalidate>
+            <label class="field-label" for="projectName">Project name <span>*</span></label>
+            <input class="field" id="projectName" name="projectName" maxlength="70" placeholder="e.g. Local bakery website" required>
+            <label class="field-label" for="clientLabel">Client / business label</label>
+            <input class="field" id="clientLabel" name="clientLabel" maxlength="50" placeholder="e.g. Sunrise Bakery">
+            <div class="field-pair">
+              <div><label class="field-label" for="serviceType">Service type</label><select class="field" id="serviceType" name="serviceType"><option>Website</option><option>Web app</option><option>Android app</option><option>AI solution</option><option>Automation</option><option>Other</option></select></div>
+              <div><label class="field-label" for="priority">Priority</label><select class="field" id="priority" name="priority"><option>Normal</option><option>High</option><option>Low</option></select></div>
+            </div>
+            <div class="field-pair">
+              <div><label class="field-label" for="customerBudget">Customer budget (₹) <span>*</span></label><input class="field" id="customerBudget" name="customerBudget" type="number" min="1" max="100000000" step="1" placeholder="25000" required></div>
+              <div><label class="field-label" for="plannedCost">Planned cost (₹)</label><input class="field" id="plannedCost" name="plannedCost" type="number" min="0" max="100000000" step="1" placeholder="18000"></div>
+            </div>
+            <p class="field-hint">Keep planned cost within the customer’s approved budget. This is an internal planning estimate, not a quote.</p>
+            <label class="field-label" for="dueDate">Target delivery date</label>
+            <input class="field" id="dueDate" name="dueDate" type="date">
+            <label class="field-label" for="customerNeed">What does the customer need? <span>*</span></label>
+            <textarea class="field field-textarea" id="customerNeed" name="customerNeed" rows="3" maxlength="700" placeholder="Describe the problem, audience and expected outcome..." required></textarea>
+            <label class="field-label" for="features">Requested features</label>
+            <textarea class="field field-textarea" id="features" name="features" rows="3" maxlength="700" placeholder="One feature per line, e.g. Contact form&#10;Mobile-friendly layout&#10;Admin dashboard"></textarea>
+            <p class="form-error" id="formError" role="alert"></p>
+            <button class="button button-primary button-full" type="submit">Add to project pipeline <span aria-hidden="true">＋</span></button>
+          </form>
+          <div class="privacy-note"><span aria-hidden="true">◈</span><p><strong>Your data stays here.</strong> Projects are saved in this browser only. Export a backup before clearing browser data or switching devices.</p></div>
+        </aside>
+      </section>
+      <footer class="footer"><span>© NEXORA AI · CLIENTDESK</span><span>PLAN WITH CLARITY. BUILD WITH CONFIDENCE.</span><span>LOCAL-FIRST / V1.0</span></footer>
+    </main>
+  </div>
+  <dialog id="projectDialog" class="project-dialog" aria-labelledby="dialogTitle"><div id="dialogContent"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
