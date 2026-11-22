@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="NEXORA LocalLift helps small businesses assess their digital presence and create a practical improvement plan.">
+  <title>NEXORA LocalLift — Digital Presence Check</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="NEXORA LocalLift home">
+      <span class="brand-mark">N</span>
+      <span>NEXORA <b>AI</b><small>LOCALLIFT</small></span>
+    </a>
+    <span class="privacy-pill"><span aria-hidden="true">●</span> PRIVATE SELF-CHECK</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">A SIMPLE DIGITAL PRESENCE CHECKUP</p>
+      <h1>Make your next<br><span>digital move count.</span></h1>
+      <p class="hero-copy">Answer a few practical questions about a business. LocalLift turns the answers into a readiness score and a clear list of next steps.</p>
+      <div class="hero-points">
+        <span>01 / No account needed</span>
+        <span>02 / No external scan</span>
+        <span>03 / Instant action plan</span>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Business digital readiness assessment">
+      <form id="auditForm" class="form-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">STEP 01 — BUSINESS SNAPSHOT</p><h2>Tell us about the business</h2></div>
+          <span class="step-count">01 <i>/</i> 02</span>
+        </div>
+        <div class="field-grid intro-fields">
+          <label class="field">
+            <span>Business name</span>
+            <input id="businessName" name="businessName" maxlength="70" placeholder="e.g. Sunrise Bakery" required>
+          </label>
+          <label class="field">
+            <span>Business type</span>
+            <select id="businessType" name="businessType" required>
+              <option value="">Choose a type</option>
+              <option>Restaurant or café</option><option>Retail shop</option><option>Education or coaching</option>
+              <option>Professional service</option><option>Health or wellness</option><option>Home or local service</option>
+              <option>Creator or personal brand</option><option>Other</option>
+            </select>
+          </label>
+          <label class="field field-wide">
+            <span>Main goal right now</span>
+            <select id="mainGoal" name="mainGoal">
+              <option>Get more enquiries</option><option>Receive bookings or orders</option>
+              <option>Build trust and visibility</option><option>Explain services more clearly</option>
+              <option>Launch a first website</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="section-heading question-heading">
+          <div><p class="eyebrow">STEP 02 — READINESS QUESTIONS</p><h2>How ready is the digital setup?</h2></div>
+          <span class="hint">Choose the closest answer</span>
+        </div>
+
+        <div class="question-group">
+          <div class="group-title"><span class="group-icon">01</span><div><h3>Website experience</h3><p>Can people understand and use the business online?</p></div><b>25 PTS</b></div>
+          <fieldset class="question" data-key="website"><legend>Does the business have a current website?</legend><div class="choices"><label><input type="radio" name="website" value="yes" required><span>Yes</span></label><label><input type="radio" name="website" value="partial"><span>In progress</span></label><label><input type="radio" name="website" value="no"><span>No</span></label></div></fieldset>
+          <fieldset class="question" data-key="mobile"><legend>Is the website easy to use on a phone?</legend><div class="choices"><label><input type="radio" name="mobile" value="yes" required><span>Yes</span></label><label><input type="radio" name="mobile" value="partial"><span>Not sure</span></label><label><input type="radio" name="mobile" value="no"><span>No</span></label></div></fieldset>
+          <fieldset class="question" data-key="cta"><legend>Is the next step obvious (call, message, book or buy)?</legend><div class="choices"><label><input type="radio" name="cta" value="yes" required><span>Yes</span></label><label><input type="radio" name="cta" value="partial"><span>Partly</span></label><label><input type="radio" name="cta" value="no"><span>No</span></label></div></fieldset>
+        </div>
+
+        <div class="question-group">
+          <div class="group-title"><span class="group-icon">02</span><div><h3>Discovery</h3><p>Can new people find the business and contact it?</p></div><b>25 PTS</b></div>
+          <fieldset class="question" data-key="google"><legend>Is the business profile on Google kept up to date?</legend><div class="choices"><label><input type="radio" name="google" value="yes" required><span>Yes</span></label><label><input type="radio" name="google" value="partial"><span>Partly</span></label><label><input type="radio" name="google" value="no"><span>No</span></label></div></fieldset>
+          <fieldset class="question" data-key="social"><legend>Is at least one social profile active and accurate?</legend><div class="choices"><label><input type="radio" name="social" value="yes" required><span>Yes</span></label><label><input type="radio" name="social" value="partial"><span>Sometimes</span></label><label><input type="radio" name="social" value="no"><span>No</span></label></div></fieldset>
+          <fieldset class="question" data-key="contact"><legend>Are phone, email or messaging details easy to find?</legend><div class="choices"><label><input type="radio" name="contact" value="yes" required><span>Yes</span></label><label><input type="radio" name="contact" value="partial"><span>Partly</span></label><label><input type="radio" name="contact" value="no"><span>No</span></label></div></fieldset>
+        </div>
+
+        <div class="question-group">
+          <div class="group-title"><span class="group-icon">03</span><div><h3>Trust and clarity</h3><p>Does the online presence answer common customer questions?</p></div><b>25 PTS</b></div>
+          <fieldset class="question" data-key="reviews"><legend>Are recent reviews or customer testimonials visible?</legend><div class="choices"><label><input type="radio" name="reviews" value="yes" required><span>Yes</span></label><label><input type="radio" name="reviews" value="partial"><span>A few</span></label><label><input type="radio" name="reviews" value="no"><span>No</span></label></div></fieldset>
+          <fieldset class="question" data-key="services"><legend>Are services, products and opening details clear?</legend><div class="choices"><label><input type="radio" name="services" value="yes" required><span>Yes</span></label><label><input type="radio" name="services" value="partial"><span>Partly</span></label><label><input type="radio" name="services" value="no"><span>No</span></label></div></fieldset>
+          <fieldset class="question" data-key="pricing"><legend>Can visitors understand pricing or how to request a quote?</legend><div class="choices"><label><input type="radio" name="pricing" value="yes" required><span>Yes</span></label><label><input type="radio" name="pricing" value="partial"><span>Partly</span></label><label><input type="radio" name="pricing" value="no"><span>No</span></label></div></fieldset>
+        </div>
+
+        <div class="question-group">
+          <div class="group-title"><span class="group-icon">04</span><div><h3>Enquiry and conversion</h3><p>Is it simple for an interested visitor to take action?</p></div><b>25 PTS</b></div>
+          <fieldset class="question" data-key="booking"><legend>Can people send an enquiry, request a quote or book online?</legend><div class="choices"><label><input type="radio" name="booking" value="yes" required><span>Yes</span></label><label><input type="radio" name="booking" value="partial"><span>Limited</span></label><label><input type="radio" name="booking" value="no"><span>No</span></label></div></fieldset>
+          <fieldset class="question" data-key="followup"><legend>Is there a clear process for replying to new enquiries?</legend><div class="choices"><label><input type="radio" name="followup" value="yes" required><span>Yes</span></label><label><input type="radio" name="followup" value="partial"><span>Sometimes</span></label><label><input type="radio" name="followup" value="no"><span>No</span></label></div></fieldset>
+        </div>
+
+        <div class="form-actions"><p>Usually takes about 2 minutes.</p><button class="primary-button" type="submit">Generate my action plan <span aria-hidden="true">↗</span></button></div>
+      </form>
+
+      <aside class="side-panel">
+        <div class="side-card dark-card">
+          <p class="eyebrow">WHAT YOU'LL GET</p>
+          <h2>A plan, not just a score.</h2>
+          <ul class="benefit-list"><li><span>✓</span> Overall readiness score</li><li><span>✓</span> Four category breakdowns</li><li><span>✓</span> Prioritised improvements</li><li><span>✓</span> Downloadable summary</li></ul>
+          <div class="side-foot">Built for practical next steps.</div>
+        </div>
+        <div class="side-card privacy-card"><span class="privacy-icon">⌑</span><h3>Your answers stay here.</h3><p>This tool runs in your browser. It does not submit your answers to a server or scan a website.</p></div>
+      </aside>
+    </section>
+
+    <section id="results" class="results hidden" aria-live="polite">
+      <div class="results-top"><div><p class="eyebrow">YOUR DIGITAL PRESENCE SNAPSHOT</p><h2 id="resultTitle">Readiness report</h2><p id="resultSubtitle" class="muted"></p></div><button id="resetButton" class="secondary-button" type="button">Start a new check</button></div>
+      <div class="results-grid">
+        <div class="score-card"><p class="eyebrow">READINESS SCORE</p><div class="score-ring" id="scoreRing"><div><strong id="scoreValue">0</strong><span>/ 100</span></div></div><h3 id="scoreLabel">Getting started</h3><p id="scoreMessage" class="muted"></p></div>
+        <div class="breakdown-card"><p class="eyebrow">CATEGORY BREAKDOWN</p><div id="categoryBars"></div></div>
+      </div>
+      <div class="recommendations-card"><div class="recommendation-head"><div><p class="eyebrow">YOUR NEXT MOVES</p><h3>Recommended action plan</h3></div><span class="priority-note">Start with the first 3</span></div><ol id="recommendationList" class="recommendation-list"></ol><div class="report-actions"><button id="downloadButton" class="primary-button" type="button">Download report ↓</button><button id="printButton" class="secondary-button" type="button">Print report</button></div><p class="disclaimer">This is a self-assessment based on your answers, not a technical website audit, ranking guarantee or professional certification.</p></div>
+    </section>
+  </main>
+  <footer class="footer"><span>NEXORA AI <b>·</b> LOCALLIFT</span><span>Plan clearly. Improve steadily.</span></footer>
+</body>
+</html>
