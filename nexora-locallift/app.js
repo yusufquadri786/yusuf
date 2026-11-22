@@ -25,7 +25,7 @@ function getAnswer(key) {
 function scoreAssessment() {
   const breakdown = categories.map(category => {
     const earned = category.fields.reduce((sum, field) => sum + field.weight * valueScore[getAnswer(field.key)], 0);
-    return { title: category.title, score: Math.round(earned), max: 25 };
+    return { title: category.title, score: Number(earned.toFixed(1)), max: 25 };
   });
   const total = Math.round(breakdown.reduce((sum, category) => sum + category.score, 0));
   const recommendations = categories.flatMap(category => category.fields
