@@ -5,7 +5,7 @@ A responsive, browser-only digital-presence self-assessment for small and local 
 ## Features
 
 - Business snapshot and goal selection.
-- 10 questions across website experience, discovery, trust and conversion.
+- 11 questions across website experience, discovery, trust and conversion.
 - Transparent weighted score out of 100.
 - Prioritised recommendations based on answers.
 - Downloadable plain-text report and print-friendly layout.
